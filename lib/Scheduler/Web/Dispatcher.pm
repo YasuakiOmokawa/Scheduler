@@ -9,18 +9,8 @@ use Time::Piece;
 any '/' => sub {
     my ($c) = @_;
 
-    return $c->render('index.tx');
-};
-
-get '/user' => sub {
-    my ($c) = @_;
-
-    my ($name, $sex, $birthday) = qw(おもかわ 男 1985/06/06);
-    return $c->render('user.tx', {
-        name     => $name,
-        sex      => $sex,
-        birthday => $birthday
-    });
+    my @schedules = $c->db->search('schedules');
+    return $c->render('index.tx', { schedules => \@schedules });
 };
 
 post '/post' => sub {

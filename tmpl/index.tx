@@ -18,4 +18,22 @@
   <button type="submit" class="btn btn-default">登録</button>
 </form>
 
+<hr />
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>日時</th>
+    </tr>
+  </thead>
+  <tbody>
+  : for $schedules -> $schedule {
+    <tr>
+      <td><: $schedule.title :></td>
+      <td><: $schedule.date.strftime("%Y/%m/%d") :></td>
+    </tr>
+  : }
+  </tbody>
+</table>
 : }
