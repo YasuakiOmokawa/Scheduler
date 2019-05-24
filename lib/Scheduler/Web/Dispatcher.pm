@@ -4,25 +4,38 @@ use warnings;
 use utf8;
 use Amon2::Web::Dispatcher::RouterBoom;
 
+use Time::Piece;
+
 any '/' => sub {
     my ($c) = @_;
-    my $counter = $c->session->get('counter') || 0;
-    $counter++;
-    $c->session->set('counter' => $counter);
-    return $c->render('index.tx', {
-        counter => $counter,
+
+    return $c->render('index.tx');
+};
+
+get '/user' => sub {
+    my ($c) = @_;
+
+    my ($name, $sex, $birthday) = qw(おもかわ 男 1985/06/06);
+    return $c->render('user.tx', {
+        name     => $name,
+        sex      => $sex,
+        birthday => $birthday
     });
 };
 
-post '/reset_counter' => sub {
-    my $c = shift;
-    $c->session->remove('counter');
-    return $c->redirect('/');
-};
-
-post '/account/logout' => sub {
+post '/post' => sub {
     my ($c) = @_;
-    $c->session->expire();
+
+    my $title = $c->req->parameters->{title};
+    my $date  = $c->req->parameters->{date};
+
+    my $date_epoch = Time::Piece->strptime($date, '%Y/%m/%d')->epoch;
+
+    $c->db->insert(schedules => {
+        title => $title,
+        date  => $date_epoch,
+    });
+
     return $c->redirect('/');
 };
 

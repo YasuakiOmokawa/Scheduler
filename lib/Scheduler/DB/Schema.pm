@@ -8,9 +8,9 @@ use Teng::Schema::Declare;
 base_row_class 'Scheduler::DB::Row';
 
 table {
-    name 'member';
+    name 'schedules';
     pk 'id';
-    columns qw(id name);
+    columns qw(id title date);
 };
 
 1;
