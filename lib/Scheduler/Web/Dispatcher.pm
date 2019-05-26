@@ -13,7 +13,11 @@ any '/' => sub {
     my $order_arg = ($order and $order eq 'reverse') ? 'date' : 'date DESC';
     my @schedules = $c->db->search('schedules', {}, {order_by => $order_arg});
 
-    return $c->render('index.tx', { schedules => \@schedules });
+    my $today = Time::Piece->localtime();
+
+    return $c->render('index.tx', {
+        schedules => \@schedules,
+        today => $today});
 };
 
 post '/post' => sub {

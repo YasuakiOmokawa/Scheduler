@@ -7,38 +7,42 @@
 <hr />
 
 <form class="form-inline" method="POST" action="<: uri_for('/post') :>">
-  <div class="form-group">
-    <label>title</label>
-    <input type="text" class="form-control" name="title" placeholder="例: Perlの勉強">
-  </div>
-  <div class="form-group">
-    <label>日付</label>
-    <input type="text" class="form-control" name="date" placeholder="例: 2015/03/19">
-  </div>
-  <button type="submit" class="btn btn-default">登録</button>
+    <div class="form-group">
+        <label>title</label>
+        <input type="text" class="form-control" name="title" placeholder="例: Perlの勉強">
+    </div>
+    <div class="form-group">
+        <label>日付</label>
+        <input type="text" class="form-control" name="date" placeholder="例: 2015/03/19">
+    </div>
+    <button type="submit" class="btn btn-default">登録</button>
 </form>
 
 <hr />
 
 <table class="table">
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>日時</th>
-    </tr>
-  </thead>
-  <tbody>
-  : for $schedules -> $schedule {
-    <tr>
-      <td><: $schedule.title :></td>
-      <td><: $schedule.date.strftime("%Y/%m/%d") :></td>
-      <td>
-        <form method="POST" action="<: uri_for('/schedules/'~$schedule.id~'/delete') :>">
-          <button type="submit" class="btn btn-danger">削除</button>
-        </form>
-      </td>
-    </tr>
-  : }
-  </tbody>
+    <thead>
+        <tr>
+            <th>タイトル</th>
+            <th>日時</th>
+        </tr>
+    </thead>
+    <tbody>
+        : for $schedules -> $schedule {
+        <tr>
+            <td <: 'class=strong' if $today.strftime("%Y/%m/%d") == $schedule.date.strftime("%Y/%m/%d") :>>
+                <: $schedule.title :>
+            </td>
+            <td>
+                <: $schedule.date.strftime("%Y/%m/%d") :>
+            </td>
+            <td>
+                <form method="POST" action="<: uri_for('/schedules/'~$schedule.id~'/delete') :>">
+                    <button type="submit" class="btn btn-danger">削除</button>
+                </form>
+            </td>
+        </tr>
+        : }
+    </tbody>
 </table>
 : }
