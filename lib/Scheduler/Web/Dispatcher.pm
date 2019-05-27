@@ -15,6 +15,9 @@ any '/' => sub {
 
     my $today = Time::Piece->localtime();
 
+    # セッション確立コード
+
+
     return $c->render('index.tx', {
         schedules => \@schedules,
         today => $today});
