@@ -60,7 +60,7 @@ post '/login' => sub {
 
     if ($users->{$id}->{pass} eq $password) {
 
-        $c->session->regenerate_id();
+        $c->session->regenerate_id(); # to prevent session fixation attacks
         $c->session->set('user_id' => $id);
     } else {
 
