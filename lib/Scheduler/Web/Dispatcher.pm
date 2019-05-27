@@ -23,14 +23,9 @@ any '/' => sub {
 post '/post' => sub {
     my ($c) = @_;
 
-    my $title = $c->req->parameters->{title};
-    my $date  = $c->req->parameters->{date};
-
-    my $date_epoch = Time::Piece->strptime($date, '%Y/%m/%d')->epoch;
-
     $c->db->insert(schedules => {
-        title => $title,
-        date  => $date_epoch,
+        title => $c->req->parameters->{title},
+        date  => $c->req->parameters->{date},
     });
 
     return $c->redirect('/');

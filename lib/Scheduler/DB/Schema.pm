@@ -17,6 +17,11 @@ table {
         my $col_value = shift;
         Time::Piece->strptime($col_value, '%s');
     };
+
+    deflate 'date' => sub {
+        my $col_value = shift;
+        Time::Piece->strptime($col_value, '%Y/%m/%d')->epoch;
+    };
 };
 
 1;
