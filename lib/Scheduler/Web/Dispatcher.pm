@@ -9,8 +9,6 @@ use Time::Piece;
 any '/' => sub {
     my ($c) = @_;
 
-    return $c->redirect('/login') unless $c->session->get('user_id');
-
     my $order = $c->req->parameters->{order};
     my $order_arg = ($order and $order eq 'reverse') ? 'date' : 'date DESC';
     my @schedules = $c->db->search('schedules', {}, {order_by => $order_arg});
@@ -62,11 +60,19 @@ post '/login' => sub {
 
         $c->session->regenerate_id(); # to prevent session fixation attacks
         $c->session->set('user_id' => $id);
+        $c->session->set('user_name' => 'hogeuser@gmail.com');
     } else {
 
         return $c->redirect('/login');
     }
 
+    return $c->redirect('/');
+};
+
+post '/account/logout' => sub {
+    my ($c) = @_;
+
+    $c->session->expire();
     return $c->redirect('/');
 };
 

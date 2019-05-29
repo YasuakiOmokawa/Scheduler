@@ -37,8 +37,13 @@
                     <li><a href="#">Link</a></li>
                 </ul>
             </div>
+            <form method="POST" action="<: uri_for('/account/logout') :>">
+                <button type="submit" class="btn">ログアウト</button>
+            </form>
         </div><!-- /.container -->
     </div><!-- /.navbar -->
+
+
     <div class="container">
         <div id="main">
             <: block content -> { } :>
