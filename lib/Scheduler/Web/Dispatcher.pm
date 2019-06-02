@@ -5,9 +5,22 @@ use utf8;
 use Amon2::Web::Dispatcher::RouterBoom;
 
 use Time::Piece;
+use Data::Dumper;
+
+sub before_action {
+    my ($c) = @_;
+    # my ($class, $c) = @_;
+
+    print "acquire session data in before_action\n";
+    print "not log in \n" unless $c->session->get('user_id');
+
+    return $c->redirect('/login');
+};
 
 any '/' => sub {
     my ($c) = @_;
+
+    return before_action($c) unless $c->session->get('user_id');
 
     my $order = $c->req->parameters->{order};
     my $order_arg = ($order and $order eq 'reverse') ? 'date' : 'date DESC';
@@ -15,9 +28,14 @@ any '/' => sub {
 
     my $today = Time::Piece->localtime();
 
+    my $user_id = $c->session->get('user_id');
+
     return $c->render('index.tx', {
         schedules => \@schedules,
-        today => $today});
+        today => $today,
+        title => 'トップページです',
+        user_id => $user_id
+    });
 };
 
 post '/post' => sub {
