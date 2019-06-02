@@ -33,8 +33,7 @@ any '/' => sub {
     return $c->render('index.tx', {
         schedules => \@schedules,
         today => $today,
-        title => 'トップページです',
-        user_id => $user_id
+        title => 'トップページです'
     });
 };
 
