@@ -22,6 +22,7 @@ sub init {
                     );
                 }
             }
+            # return $c->redirect('/login') unless $c->session->get('user_id'); # need login
             return;
         },
     );
@@ -64,4 +65,3 @@ __END__
 =head1 DESCRIPTION
 
 This module manages session for Scheduler.
-

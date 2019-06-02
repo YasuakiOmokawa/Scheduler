@@ -6,6 +6,8 @@ use parent qw(Exporter);
 use Module::Functions;
 use File::Spec;
 
+use Data::Dumper;
+
 our @EXPORT = get_public_functions();
 
 sub commify {
@@ -17,6 +19,11 @@ sub commify {
 sub c { Scheduler->context() }
 sub uri_with { Scheduler->context()->req->uri_with(@_) }
 sub uri_for { Scheduler->context()->uri_for(@_) }
+
+sub get_user_id {
+    return Scheduler->context()->session->get('user_name');
+}
+
 
 {
     my %static_file_cache;

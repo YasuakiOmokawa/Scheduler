@@ -210,6 +210,19 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Class-Method-Modifiers-2.12
+    pathname: E/ET/ETHER/Class-Method-Modifiers-2.12.tar.gz
+    provides:
+      Class::Method::Modifiers 2.12
+    requirements:
+      B 0
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      base 0
+      perl 5.006
+      strict 0
+      warnings 0
   Class-Singleton-1.5
     pathname: S/SH/SHAY/Class-Singleton-1.5.tar.gz
     provides:
@@ -404,6 +417,31 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.36
       Test::More 0.96
       Try::Tiny 0
+  Data-Dump-1.23
+    pathname: G/GA/GAAS/Data-Dump-1.23.tar.gz
+    provides:
+      Data::Dump 1.23
+      Data::Dump::FilterContext undef
+      Data::Dump::Filtered undef
+      Data::Dump::Trace 0.02
+      Data::Dump::Trace::Call 0.02
+      Data::Dump::Trace::Wrapper 0.02
+    requirements:
+      ExtUtils::MakeMaker 0
+      Symbol 0
+      Test 0
+      perl 5.006
+  Data-Dumper-Concise-2.023
+    pathname: E/ET/ETHER/Data-Dumper-Concise-2.023.tar.gz
+    provides:
+      Data::Dumper::Concise 2.023
+      Data::Dumper::Concise::Sugar 2.023
+      Devel::Dwarn undef
+    requirements:
+      Data::Dumper 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      perl 5.006
   Data-MessagePack-1.00
     pathname: S/SY/SYOHEX/Data-MessagePack-1.00.tar.gz
     provides:
@@ -1432,6 +1470,18 @@ DISTRIBUTIONS
       IPC::Cmd 0
       XSLoader 0.22
       base 0
+  Log-Minimal-0.19
+    pathname: K/KA/KAZEBURO/Log-Minimal-0.19.tar.gz
+    provides:
+      Log::Minimal 0.19
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Data::Dumper 0
+      ExtUtils::CBuilder 0
+      Module::Build 0.38
+      Scalar::Util 0
+      Term::ANSIColor 0
   MRO-Compat-0.13
     pathname: H/HA/HAARG/MRO-Compat-0.13.tar.gz
     provides:
@@ -1813,6 +1863,34 @@ DISTRIBUTIONS
       Try::Tiny 0
       URI 1.59
       WWW::Form::UrlEncoded 0.23
+      parent 0
+      perl 5.008001
+  Plack-Middleware-Debug-0.17
+    pathname: M/MI/MIYAGAWA/Plack-Middleware-Debug-0.17.tar.gz
+    provides:
+      Plack::Middleware::Debug 0.17
+      Plack::Middleware::Debug::Base 0.17
+      Plack::Middleware::Debug::CatalystLog 0.17
+      Plack::Middleware::Debug::DBITrace 0.17
+      Plack::Middleware::Debug::Environment 0.17
+      Plack::Middleware::Debug::Memory 0.17
+      Plack::Middleware::Debug::ModuleVersions 0.17
+      Plack::Middleware::Debug::Panel undef
+      Plack::Middleware::Debug::Parameters undef
+      Plack::Middleware::Debug::PerlConfig 0.17
+      Plack::Middleware::Debug::Response 0.17
+      Plack::Middleware::Debug::Session undef
+      Plack::Middleware::Debug::Timer 0.17
+      Plack::Middleware::Debug::TrackObjects undef
+    requirements:
+      Class::Method::Modifiers 1.05
+      Data::Dump 0
+      Data::Dumper::Concise 0
+      Encode 2.23
+      File::ShareDir 1.00
+      Module::Build::Tiny 0.034
+      Plack 0
+      Text::MicroTemplate 0.15
       parent 0
       perl 5.008001
   Plack-Middleware-ReverseProxy-0.16
@@ -2272,6 +2350,17 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Text-MicroTemplate-0.24
+    pathname: K/KA/KAZUHO/Text-MicroTemplate-0.24.tar.gz
+    provides:
+      Text::MicroTemplate 0.24
+      Text::MicroTemplate::EncodedString 0.24
+      Text::MicroTemplate::File undef
+    requirements:
+      ExtUtils::MakeMaker 6.59
+      File::Temp 0
+      Test::More 0
+      perl 5.00800
   Text-Xslate-v3.5.6
     pathname: S/SK/SKAJI/Text-Xslate-v3.5.6.tar.gz
     provides:

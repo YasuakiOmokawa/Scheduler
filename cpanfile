@@ -15,6 +15,9 @@ requires 'Text::Xslate', '2.0009';
 requires 'Time::Piece', '1.20';
 requires 'perl', '5.010_001';
 
+requires 'Plack::Middleware::Debug', '0.17';
+requires 'Log::Minimal', '0.19';
+
 on configure => sub {
     requires 'Module::Build', '0.38';
     requires 'Module::CPANfile', '0.9010';

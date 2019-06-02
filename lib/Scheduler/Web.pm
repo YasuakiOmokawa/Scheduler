@@ -5,9 +5,19 @@ use utf8;
 use parent qw/Scheduler Amon2::Web/;
 use File::Spec;
 
+use Log::Minimal;
+use Data::Dumper;
+
 # dispatcher
 use Scheduler::Web::Dispatcher;
 sub dispatch {
+
+    # do action first of all
+    # if (Scheduler::Web::Dispatcher->can('before_action')) {
+    #     Scheduler::Web::Dispatcher->before_action($_[0]);
+    # }
+    # return (Scheduler::Web::Dispatcher->can('before_action')->($_[0]) or die "before_action response is not generated");
+
     return (Scheduler::Web::Dispatcher->dispatch($_[0]) or die "response is not generated");
 }
 
@@ -29,8 +39,16 @@ use Scheduler::Web::View;
     }
 }
 
-# for your security
 __PACKAGE__->add_trigger(
+
+    # is login?
+    # BEFORE_ACTION => sub {
+    #     my ( $c ) = @_;
+
+    #     return $c->redirect('/login') unless $c->session->get('user_id');
+    # },
+
+    # for your security
     AFTER_DISPATCH => sub {
         my ( $c, $res ) = @_;
 
