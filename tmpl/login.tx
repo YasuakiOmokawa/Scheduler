@@ -9,11 +9,11 @@
 <form class="form-inline" method="POST" action="<: uri_for('/login') :>">
     <div class="form-group">
         <label>ID</label>
-        <input type="text" class="form-control" name="id" placeholder="例: Perlの勉強">
+        <input type="text" class="form-control" name="id" placeholder="">
     </div>
     <div class="form-group">
         <label>パスワード</label>
-        <input type="text" class="form-control" name="password" placeholder="例: 2015/03/19">
+        <input type="text" class="form-control" name="password" placeholder="">
     </div>
     <button type="submit" class="btn btn-default">ログイン</button>
 </form>
